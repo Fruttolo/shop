@@ -19,6 +19,8 @@ class Carrello(object):
         return self.totale
     
     def compra_tutto(self):
+        for prodotto in self.prodotti:
+            prodotto.vendita(prodotto.quantità,prodotto.stock)
         self.prodotti = []
         self.totale = 0
         print("Hai acquistato tutto")

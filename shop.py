@@ -34,18 +34,17 @@ class Shop(object):
         for prodotto in self.prodotti:
             frame = tk.Frame(self.visualizza_prodotti_frame)
             frame.pack(fill=tk.X)
-            image_label = tk.Label(frame,image = str(prodotto.immagine))
+            frame2 = tk.Frame(frame)
+            frame2.pack(fill=tk.X)
+            image_label = tk.Label(frame2,image = prodotto.immagine)
             image_label.pack(side = tk.LEFT)
-            label = tk.Label(frame,text = f"{prodotto.nome} - € {prodotto.prezzo}")
+            label = tk.Label(frame2,text = f"{prodotto.nome} - € {prodotto.prezzo}")
             label.pack(side = tk.LEFT)
-            label2 = tk.Label(frame,text = prodotto.quantità)
-            label2.pack(side = tk.LEFT)
-            label3 = tk.Label(frame,text = prodotto.stock)
-            label3.pack(side = tk.LEFT)
-            #ttk.Label(frm,text = prodotto.stock).grid(column = 1,row = r - 3)
-            button = tk.Button(frame,text = "Aggiungi al carrello", command = lambda p = prodotto: self.aggiungi(p))
+            button = tk.Button(frame2,text = "Aggiungi al carrello", command = lambda p = prodotto: self.aggiungi(p))
             button.pack(side = tk.RIGHT)
-            #ttk.Label(frm,image = prodotto.immagine).grid(column = 0, row = r - 6)
+            self.label2 = tk.Label(frame,text = "Quantità:"+ prodotto.quantità + " Stock:"+ prodotto.stock + " Descrizione:"+ prodotto.descrizione + " Numero di serie:"+ prodotto.numero_di_serie)
+            self.label2.pack(side = tk.LEFT)
+            
 
     def visualizza_carrello(self):
         label = tk.Label(self.visualizza_carrello_frame)
@@ -81,6 +80,8 @@ class Shop(object):
     def mostra_prodotti(self):
         self.visualizza_carrello_frame.pack_forget()
         self.visualizza_prodotti_frame.pack()
+        #for prodotto in self.prodotti:
+            #self.label2.config(text = "Quantità:"+ prodotto.quantità + " Stock:"+ prodotto.stock + " Descrizione:"+ prodotto.descrizione + " Numero di serie:"+ prodotto.numero_di_serie)
         #self.lista_carrello.config(text = "carrello")
 
     def mostra_carrello(self):
@@ -90,11 +91,11 @@ class Shop(object):
         self.totale.config(text = "Totale: €" + str(self.totale_carrello))
 
     def compra_tutto(self):
-        #for prodotto in self.carrello.prodotti:
-            #prodotto.vendita(prodotto.quantità,prodotto.stock)
         self.carrello.compra_tutto()
         self.aggiorna_carrello()
         self.mostra_carrello()
+        for prodotto in self.prodotti:
+            print("Quantità:"+ prodotto.quantità + " Stock:"+ prodotto.stock + " Descrizione:"+ prodotto.descrizione + " Numero di serie:"+ prodotto.numero_di_serie)
 
         
 
