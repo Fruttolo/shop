@@ -9,4 +9,15 @@ class Carrello(object):
     def rimuovi_prodotto(self,prodotto):
         if prodotto in self.prodotti:
             self.prodotti.remove(prodotto)
+
+    def calcola_totale(self):
+        self.totale = 0
+        for prodotto in self.prodotti:
+            self.totale += prodotto.prezzo
+        return self.totale
+    
+    def compra_tutto(self):
+        self.prodotti = []
+        self.totale = 0
+        print("Hai acquistato tutto")
         
