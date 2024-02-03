@@ -15,7 +15,7 @@ class Carrello(object):
     def calcola_totale(self):
         self.totale = 0
         for prodotto in self.prodotti:
-            self.totale += prodotto.prezzo
+            self.totale += int(prodotto.prezzo)
         return self.totale
     
     def compra_tutto(self):

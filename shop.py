@@ -5,6 +5,7 @@ import tkinter as tk
 class Shop(object):
 
     def __init__(self,master):
+        self.totale_carrello = 0
         self.master = master  #root
         self.master.title("Negozio")
         self.prodotti = []
@@ -45,10 +46,10 @@ class Shop(object):
         label.pack()
         self.lista_carrello = tk.Listbox(self.visualizza_carrello_frame,height = 15,width = 50)
         self.lista_carrello.pack()
-        button = tk.Button(self.visualizza_carrello_frame, text = "Compra tutto",command = lambda: self.carrello.compra_tutto())
+        button = tk.Button(self.visualizza_carrello_frame, text = "Compra tutto",command = lambda: self.compra_tutto())
         button.pack()
-        totale = tk.Label(self.visualizza_carrello_frame,text = self.carrello.calcola_totale())
-        totale.pack()
+        self.totale = tk.Label(self.visualizza_carrello_frame,text = "Totale: €" + str(self.totale_carrello))
+        self.totale.pack()
         
     def aggiungi(self,p):
         self.carrello.aggiungi_al_carrello(p)
@@ -77,13 +78,14 @@ class Shop(object):
         #self.lista_carrello.config(text = "carrello")
 
     def mostra_carrello(self):
+        self.totale_carrello = self.carrello.calcola_totale()
         self.visualizza_prodotti_frame.pack_forget()
         self.visualizza_carrello_frame.pack()
-        #self.lista_carrello.config(text = "prodotti nel carrello:")
+        self.totale.config(text = "Totale: €" + str(self.totale_carrello))
 
     def compra_tutto(self):
-        for prodotto in self.carrello.prodotti:
-            prodotto.vendita(prodotto.quantità,prodotto.stock)
+        #for prodotto in self.carrello.prodotti:
+            #prodotto.vendita(prodotto.quantità,prodotto.stock)
         self.carrello.compra_tutto()
         self.aggiorna_carrello()
         self.mostra_carrello()
