@@ -47,6 +47,8 @@ class Shop(object):
         self.lista_carrello.pack()
         button = tk.Button(self.visualizza_carrello_frame, text = "Compra tutto",command = lambda: self.carrello.compra_tutto())
         button.pack()
+        totale = tk.Label(self.visualizza_carrello_frame,text = self.carrello.calcola_totale())
+        totale.pack()
         
     def aggiungi(self,p):
         self.carrello.aggiungi_al_carrello(p)
@@ -84,6 +86,7 @@ class Shop(object):
             prodotto.vendita(prodotto.quantità,prodotto.stock)
         self.carrello.compra_tutto()
         self.aggiorna_carrello()
+
         
 
 

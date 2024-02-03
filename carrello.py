@@ -1,8 +1,10 @@
 class Carrello(object):
-
-    prodotti = []
-    totale = 0
   
+    def __init__(self):
+        self.prodotti = []
+        self.totale = 0
+        
+
     def aggiungi_al_carrello(self,prodotto):
         self.prodotti.append(prodotto)
 
