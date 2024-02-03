@@ -32,6 +32,7 @@ class Shop(object):
     
     def visualizza_prodotti(self):
         c = 0
+        self.label2 = []
         for prodotto in self.prodotti:
             frame = tk.Frame(self.visualizza_prodotti_frame)
             frame.pack(fill=tk.X)
@@ -43,7 +44,6 @@ class Shop(object):
             label.pack(side = tk.LEFT)
             button = tk.Button(frame2,text = "Aggiungi al carrello", command = lambda p = prodotto: self.aggiungi(p))
             button.pack(side = tk.RIGHT)
-            self.label2 = []
             self.label2.append(tk.Label(frame,text = "Quantità:"+ prodotto.quantità + " Stock:"+ prodotto.stock + " Descrizione:"+ prodotto.descrizione + " Numero di serie:"+ prodotto.numero_di_serie))
             self.label2[c].pack(side = tk.LEFT)
             c = c + 1
@@ -98,8 +98,7 @@ class Shop(object):
         self.carrello.compra_tutto()
         self.aggiorna_carrello()
         self.mostra_carrello()
-        for prodotto in self.prodotti:
-            print("Quantità:"+ prodotto.quantità + " Stock:"+ prodotto.stock + " Descrizione:"+ prodotto.descrizione + " Numero di serie:"+ prodotto.numero_di_serie)
+        
 
         
 

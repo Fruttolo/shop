@@ -33,28 +33,17 @@ class Prodotto(object):
         if descrizione != "":
             self.descrizione = descrizione
     
-
-    #def visualizza(self):
-        #print("L'immagine del prodotto è:", self.immagine)
-        #print("Il numero di serie del prodotto è:", self.numero_di_serie)
-        #print("Il prezzo del prodotto è:", self.prezzo)
-        #print("Il nome del prodotto è:", self.nome)
-        #print("La quantità di prodotti è:", self.quantità)
-        #print("Lo stock del prodotto è:",self.stock)
-        #print("La descrizione del prodotto è:",self.descrizione)
-        
     
 
     def riordino(self, quantità,stock):
-        if int(quantità) < int(stock):
-            self.quantità = str(int(quantità) + 10)
+        if int(quantità) <= int(stock):
+            self.quantità = str(int(quantità) + 9) #ne aggiungo 9 perchè 1 l'ho appena acquistato
 
 
     def vendita(self,quantità,stock):
-        if int(quantità) > int(stock):
-            self.quantità = str(int(quantità) - 1)
-            print("Hai venduto 1 articolo")
+        self.quantità = str(int(quantità) - 1)
+        print("Hai venduto 1 articolo")
+        if int(quantità) <= int(stock):
             self.riordino(quantità,stock)
-        else:
-            print("Esegui prima il riordino degli articoli")
+            print("Ho eseguito il riordino degli articoli")
 
