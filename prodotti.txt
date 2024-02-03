@@ -1,0 +1,10 @@
+./asset/occhiali da sole oro lenti azzurre.jpg,1,50,occhiali da sole lenti blu,10,3,descrizione 1
+./asset/occhiali da sole lenti gialle.jpeg,2,65,occhiali da sole,10,3,descrizione 2
+./asset/occhiali da sole lenti grigie scure.jpg,3,80,occhiali da sole,10,3,descrizione 3
+./asset/occhiali da sole lenti verdi.jpg,4,49,occhiali da sole,10,3,descrizione 4
+./asset/occhiali da sole con telecamera.jpeg,5,190, occhiali con telecamera da sole e da vista,10,3,descrizione 5
+./asset/occhiali da vista argentati.png,6,150,montatura argento da vista,10,3,descrizione 6
+./asset/occhiali da vista neri e argento.jpg,7,80,occhiali da vista oro,10,3,descrizione 7
+./asset/occhiali da vista rotondi.png,8,99,occhiali da vista rotondi,10,3,descrizione 8
+./asset/occhiali da vista oro.jpg,9,10,occhiali da vista ovali,10,3,descrizione 9
+./asset/occhiali da vista squadrati.jpeg,10,135,occhiali da vista squadrati neri,10,3,descrizione 10
