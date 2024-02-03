@@ -45,7 +45,7 @@ class Shop(object):
         label.pack()
         self.lista_carrello = tk.Listbox(self.visualizza_carrello_frame,height = 15,width = 50)
         self.lista_carrello.pack()
-        button = tk.Button(self.visualizza_carrello_frame, text = "Compra tutto",command = lambda: self.compra_tutto())
+        button = tk.Button(self.visualizza_carrello_frame, text = "Compra tutto",command = lambda: self.carrello.compra_tutto())
         button.pack()
         
     def aggiungi(self,p):
@@ -80,10 +80,10 @@ class Shop(object):
         #self.lista_carrello.config(text = "prodotti nel carrello:")
 
     def compra_tutto(self):
-        totale = sum(item.prezzo for item in self.carrello)
-        for item in self.carrello.prodotti:
-            item.vendita(item.quantità,item.stock)
-            self.rimuovi(item)
+        for prodotto in self.carrello.prodotti:
+            prodotto.vendita(prodotto.quantità,prodotto.stock)
+        self.carrello.compra_tutto()
+        self.aggiorna_carrello()
         
 
 
