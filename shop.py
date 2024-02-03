@@ -1,21 +1,25 @@
 from classe_prodottopr import *
 from carrello import *
 import tkinter as tk
+from PIL import ImageTk,Image
 
 class Shop(object):
 
     def __init__(self,master):
+        self.photo = []
         self.totale_carrello = 0
         self.master = master  #root
         self.master.title("Negozio")
         self.prodotti = []
         file = open("prodotti.txt","r")
+        c = 0
         for riga in file:
             elementi = riga.split(",")
-            #image = Image.open(elementi[0])
-            #image = image.resize((50,50))
-            #photo.append(ttk.PhotoImage(image))
-            self.prodotti.append(Prodotto(elementi[0],elementi[1],elementi[2],elementi[3],elementi[4],elementi[5],elementi[6]))
+            image = Image.open(elementi[0])
+            image = image.resize((50,50))
+            self.photo.append(tk.PhotoImage(image))
+            self.prodotti.append(Prodotto(self.photo[c],elementi[1],elementi[2],elementi[3],elementi[4],elementi[5],elementi[6]))
+            c = c + 1
         self.carrello = Carrello()
         self.visualizza_prodotti_frame = tk.Frame(self.master)
         self.visualizza_prodotti_frame.pack(padx = 10, pady = 10)
@@ -30,6 +34,8 @@ class Shop(object):
         for prodotto in self.prodotti:
             frame = tk.Frame(self.visualizza_prodotti_frame)
             frame.pack(fill=tk.X)
+            image_label = tk.Label(frame,image = prodotto.immagine)
+            image_label.pack(side = tk.LEFT)
             label = tk.Label(frame,text = f"{prodotto.nome} - € {prodotto.prezzo}")
             label.pack(side = tk.LEFT)
             label2 = tk.Label(frame,text = prodotto.quantità)
