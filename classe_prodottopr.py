@@ -8,7 +8,7 @@ class Prodotto(object):
     stock = 0
     descrizione = ""
 
-
+    #Costruttore istanza prodotto
     def __init__(self, immagine, numero_di_serie, prezzo, nome, quantità,stock,descrizione):
         self.immagine = immagine
         self.numero_di_serie = numero_di_serie
@@ -18,7 +18,7 @@ class Prodotto(object):
         self.stock = stock
         self.descrizione = descrizione
     
-
+    #Metodo modifica
     def modifica(self, numero_di_serie, prezzo, nome, quantità,stock,descrizione):
         if numero_di_serie != "":
             self.numero_di_serie = int(numero_di_serie)
@@ -33,13 +33,12 @@ class Prodotto(object):
         if descrizione != "":
             self.descrizione = descrizione
     
-    
-
+    #Metodo di riordino dei prodotti 
     def riordino(self, quantità,stock):
         if int(quantità) <= int(stock):
             self.quantità = str(int(quantità) + 9) #ne aggiungo 9 perchè 1 l'ho appena acquistato
 
-
+    #Metodo che permette di acquistare i prodotti in base a quantità e stock
     def vendita(self,quantità,stock):
         self.quantità = str(int(quantità) - 1)
         print("Hai venduto 1 articolo")
