@@ -86,6 +86,7 @@ class Shop(object):
             prodotto.vendita(prodotto.quantità,prodotto.stock)
         self.carrello.compra_tutto()
         self.aggiorna_carrello()
+        self.mostra_carrello()
 
         
 
