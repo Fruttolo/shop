@@ -17,7 +17,7 @@ class Shop(object):
             elementi = riga.split(",")
             image = Image.open(elementi[0])
             image = image.resize((50,50))
-            self.photo.append(tk.PhotoImage(image))
+            self.photo.append(ImageTk.PhotoImage(image))
             self.prodotti.append(Prodotto(self.photo[c],elementi[1],elementi[2],elementi[3],elementi[4],elementi[5],elementi[6]))
             c = c + 1
         self.carrello = Carrello()
@@ -34,7 +34,7 @@ class Shop(object):
         for prodotto in self.prodotti:
             frame = tk.Frame(self.visualizza_prodotti_frame)
             frame.pack(fill=tk.X)
-            image_label = tk.Label(frame,image = prodotto.immagine)
+            image_label = tk.Label(frame,image = str(prodotto.immagine))
             image_label.pack(side = tk.LEFT)
             label = tk.Label(frame,text = f"{prodotto.nome} - € {prodotto.prezzo}")
             label.pack(side = tk.LEFT)
